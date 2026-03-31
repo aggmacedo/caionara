@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caio & Hindyanara ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose:     #c8767a;
+      --blush:    #f2d4d4;
+      --ivory:    #fdf7f2;
+      --gold:     #c9a84c;
+      --dark:     #1c1410;
+      --mid:      #5c3d35;
+      --light:    #e8cfc8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--ivory);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── PARTICLES ── */
+    #particles {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: float-up linear infinite;
+    }
+    @keyframes float-up {
+      0%   { transform: translateY(0) translateX(0) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.2; }
+      100% { transform: translateY(-100vh) translateX(var(--drift)) scale(1.5); opacity: 0; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200,118,122,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .ornament {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fade-in 1.2s 0.3s ease forwards;
+    }
+
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--ivory);
+      opacity: 0;
+      animation: fade-in 1.2s 0.6s ease forwards;
+    }
+    .names em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .ampersand {
+      display: inline-block;
+      font-style: italic;
+      color: var(--gold);
+      margin: 0 0.3em;
+      animation: pulse-heart 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-heart {
+      0%, 100% { transform: scale(1); }
+      50%       { transform: scale(1.08); }
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--light);
+      margin-top: 1.2rem;
+      opacity: 0;
+      animation: fade-in 1.2s 1s ease forwards;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fade-in 1s 2s ease forwards;
+    }
+    .scroll-hint span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: line-grow 1.5s 2.5s ease forwards, line-pulse 2s 4s ease-in-out infinite;
+    }
+    @keyframes line-grow {
+      from { height: 0; opacity: 0; }
+      to   { height: 50px; opacity: 1; }
+    }
+    @keyframes line-pulse {
+      0%, 100% { opacity: 0.5; }
+      50%       { opacity: 1; }
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 2rem;
+      z-index: 1;
+      position: relative;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .divider-icon {
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    /* ── SLIDESHOW ── */
+    .slideshow-section {
+      position: relative;
+      z-index: 1;
+      padding: 4rem 2rem;
+    }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .slideshow {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,168,76,0.3);
+    }
+    .slide {
+      display: none;
+      width: 100%;
+      aspect-ratio: 4/3;
+      position: relative;
+    }
+    .slide.active { display: block; }
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,20,16,0.7) 0%, transparent 50%);
+    }
+
+    .slide-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .slide-btn {
+      background: none; border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide-btn:hover {
+      background: rgba(201,168,76,0.15);
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+    .dots {
+      display: flex; gap: 0.5rem;
+    }
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+
+    /* ── MILESTONES ── */
+    .milestones-section {
+      position: relative; z-index: 1;
+      padding: 5rem 2rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      text-align: center;
+      color: var(--ivory);
+      margin-bottom: 3rem;
+    }
+    .section-title em { color: var(--rose); font-style: italic; }
+
+    .timeline {
+      max-width: 750px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+    }
+
+    .milestone {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .milestone.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .milestone::before {
+      content: '';
+      position: absolute;
+      left: -0.45rem; top: 0.4rem;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--rose);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 12px rgba(200,118,122,0.6);
+    }
+    .milestone-date {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .milestone-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--ivory);
+      margin-bottom: 0.3rem;
+    }
+    .milestone-desc {
+      font-size: 0.9rem;
+      color: var(--light);
+      line-height: 1.7;
+    }
+
+    /* ── TIMERS ── */
+    .timers-section {
+      position: relative; z-index: 1;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .timers-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .timer-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      flex: 1;
+      min-width: 260px;
+      max-width: 380px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.4);
+    }
+    .timer-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .timer-card.featured {
+      border-color: rgba(200,118,122,0.4);
+      background: rgba(200,118,122,0.05);
+    }
+    .timer-card.featured::before {
+      background: linear-gradient(to right, transparent, var(--rose), transparent);
+    }
+
+    .timer-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .timer-card.featured .timer-label { color: var(--rose); }
+
+    .timer-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--ivory);
+      margin-bottom: 1.5rem;
+    }
+
+    .time-units {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 0.5rem;
+    }
+    .time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .time-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--ivory);
+      min-width: 2ch;
+      text-align: center;
+    }
+    .timer-card.featured .time-value { color: var(--blush); }
+    .time-sep {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      padding-bottom: 0.15rem;
+      opacity: 0.5;
+    }
+    .time-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    .timer-since {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      position: relative; z-index: 1;
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .footer-heart {
+      font-size: 2rem;
+      color: var(--rose);
+      animation: pulse-heart 2.5s ease-in-out infinite;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .footer-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--light);
+    }
+    .footer-names {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-top: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,6,4,0.95);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+      backdrop-filter: blur(8px);
+      animation: lb-in 0.3s ease;
+    }
+    .lightbox.open { display: flex; }
+    @keyframes lb-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.9), 0 0 0 1px rgba(201,168,76,0.3);
+      animation: lb-scale 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: default;
+    }
+    @keyframes lb-scale {
+      from { transform: scale(0.85); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: none; border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .lightbox-close:hover { background: rgba(201,168,76,0.15); transform: scale(1.1); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: none; border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .lightbox-nav:hover { background: rgba(201,168,76,0.15); }
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
+    /* Make slides clickable */
+    .slide { cursor: zoom-in; }
+
+    /* ── MUSIC PLAYER ── */
+    #yt-iframe { display: none; }
+    .music-bar {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(28,20,16,0.85);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 40px;
+      padding: 0.6rem 1rem 0.6rem 0.7rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      transition: opacity 0.3s;
+    }
+    .music-btn {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s;
+      flex-shrink: 0;
+    }
+    .music-btn:hover { background: rgba(201,168,76,0.3); transform: scale(1.08); }
+    .music-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-width: 160px;
+    }
+    .music-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .music-artist {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.4);
+      white-space: nowrap;
+    }
+    .music-equalizer {
+      display: flex; gap: 2px; align-items: flex-end; height: 14px;
+    }
+    .music-equalizer span {
+      width: 3px;
+      background: var(--rose);
+      border-radius: 2px;
+      animation: eq-bounce 0.8s ease-in-out infinite;
+    }
+    .music-equalizer span:nth-child(1) { animation-delay: 0s;    height: 6px; }
+    .music-equalizer span:nth-child(2) { animation-delay: 0.15s; height: 10px; }
+    .music-equalizer span:nth-child(3) { animation-delay: 0.3s;  height: 7px; }
+    .music-equalizer.paused span { animation-play-state: paused; }
+    @keyframes eq-bounce {
+      0%, 100% { transform: scaleY(0.4); }
+      50%       { transform: scaleY(1); }
+    }
+    .music-notice {
+      position: fixed;
+      bottom: 5rem; right: 1.5rem;
+      z-index: 500;
+      background: rgba(28,20,16,0.9);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.75rem;
+      color: var(--light);
+      max-width: 220px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transition: opacity 0.4s;
+      pointer-events: none;
+    }
+    .music-notice.show { opacity: 1; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .timeline { padding-left: 1rem; }
+      .milestone { padding-left: 1.5rem; }
+      .timer-card { min-width: 100%; }
+      .lightbox-nav { display: none; }
+      .music-info { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="ornament">uma história de amor</div>
+  <h1 class="names">
+    <em>Caio</em>
+    <span class="ampersand">&</span>
+    <em>Hindyanara</em>
+  </h1>
+  <p class="tagline">Cada segundo ao seu lado é um presente que guardo no peito</p>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>deslize</span>
+  </div>
+</section>
+
+<!-- SLIDESHOW -->
+<section class="slideshow-section">
+  <p class="section-label">nossa história em fotos</p>
+  <div class="slideshow" id="slideshow">
+    <div class="slide active">
+      <img src="https://drive.google.com/thumbnail?id=1RYNiOHAk-nqJnhM1sU2UDJ_tuz2bPDie&sz=w800" alt="Foto 1" onerror="this.parentElement.style.background='#2a1a15'; this.style.display='none'"/>
+      <div class="slide-overlay"></div>
+    </div>
+    <div class="slide">
+      <img src="https://drive.google.com/thumbnail?id=11nQnt0zY0GYaYqBc4Eml0mr2zmarXxWm&sz=w800" alt="Foto 2" onerror="this.parentElement.style.background='#2a1a15'; this.style.display='none'"/>
+      <div class="slide-overlay"></div>
+    </div>
+    <div class="slide">
+      <img src="https://drive.google.com/thumbnail?id=1wU1OZXm2YmRa68OdlwC6t1hipcnpJrtD&sz=w800" alt="Foto 3" onerror="this.parentElement.style.background='#2a1a15'; this.style.display='none'"/>
+      <div class="slide-overlay"></div>
+    </div>
+    <div class="slide">
+      <img src="https://drive.google.com/thumbnail?id=1Wr1L1gf-lCIfey8zo2xxo5mhTSlpP_T0&sz=w800" alt="Foto 4" onerror="this.parentElement.style.background='#2a1a15'; this.style.display='none'"/>
+      <div class="slide-overlay"></div>
+    </div>
+    <div class="slide">
+      <img src="https://drive.google.com/thumbnail?id=19R2kwWuZKFz5ZX71k8IQiNdB2nAA6SKh&sz=w800" alt="Foto 5" onerror="this.parentElement.style.background='#2a1a15'; this.style.display='none'"/>
+      <div class="slide-overlay"></div>
+    </div>
+  </div>
+  <div class="slide-controls">
+    <button class="slide-btn" id="prev">&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="slide-btn" id="next">&#8594;</button>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+
+<!-- MILESTONES -->
+<section class="milestones-section">
+  <h2 class="section-title">Os momentos que <em>nos definiram</em></h2>
+  <div class="timeline">
+    <div class="milestone">
+      <div class="milestone-date">13 de Abril de 2024 · 03h15</div>
+      <div class="milestone-title">O começo de tudo</div>
+      <div class="milestone-desc">A madrugada que mudou nossas vidas para sempre. Foi nesse momento que dois corações decidiram caminhar juntos.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">12 de Setembro de 2024 · 21h40</div>
+      <div class="milestone-title">Você quer ser minha noiva?</div>
+      <div class="milestone-desc">Com o coração cheio de amor, Caio pediu Hindyanara para ser sua noiva. Uma noite que ficará gravada para sempre em nossas memórias.</div>
+    </div>
+    <div class="milestone">
+      <div class="milestone-date">20 de Março de 2026 · 05h30</div>
+      <div class="milestone-title">O nosso reencontro</div>
+      <div class="milestone-desc">A manhã em que o universo nos reuniu novamente. Cada separação só fez o amor crescer mais forte.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider"><span class="divider-icon">✦</span></div>
+
+<!-- TIMERS -->
+<section class="timers-section">
+  <p class="section-label">o tempo do nosso amor</p>
+  <h2 class="section-title">Cada segundo <em>conta</em></h2>
+  <div class="timers-grid">
+
+    <!-- Namoro -->
+    <div class="timer-card featured">
+      <div class="timer-label">♡ nosso namoro</div>
+      <div class="timer-title">Juntos desde o primeiro olhar</div>
+      <div class="time-units">
+        <div class="time-unit">
+          <span class="time-value" id="d1-days">0</span>
+          <span class="time-label">dias</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d1-hours">00</span>
+          <span class="time-label">horas</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d1-min">00</span>
+          <span class="time-label">min</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d1-sec">00</span>
+          <span class="time-label">seg</span>
+        </div>
+      </div>
+      <div class="timer-since">desde 13 abr 2024 às 03h15</div>
+    </div>
+
+    <!-- Noivado -->
+    <div class="timer-card">
+      <div class="timer-label">💍 nosso noivado</div>
+      <div class="timer-title">Prometidos um ao outro</div>
+      <div class="time-units">
+        <div class="time-unit">
+          <span class="time-value" id="d2-days">0</span>
+          <span class="time-label">dias</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d2-hours">00</span>
+          <span class="time-label">horas</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d2-min">00</span>
+          <span class="time-label">min</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d2-sec">00</span>
+          <span class="time-label">seg</span>
+        </div>
+      </div>
+      <div class="timer-since">desde 12 set 2024 às 21h40</div>
+    </div>
+
+    <!-- Reencontro -->
+    <div class="timer-card">
+      <div class="timer-label">🌅 nosso reencontro</div>
+      <div class="timer-title">Reunidos de novo</div>
+      <div class="time-units">
+        <div class="time-unit">
+          <span class="time-value" id="d3-days">0</span>
+          <span class="time-label">dias</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d3-hours">00</span>
+          <span class="time-label">horas</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d3-min">00</span>
+          <span class="time-label">min</span>
+        </div>
+        <span class="time-sep">·</span>
+        <div class="time-unit">
+          <span class="time-value" id="d3-sec">00</span>
+          <span class="time-label">seg</span>
+        </div>
+      </div>
+      <div class="timer-since">desde 20 mar 2026 às 05h30</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lb-close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lb-prev">&#8592;</button>
+  <img id="lb-img" src="" alt="Foto ampliada" onclick="event.stopPropagation()"/>
+  <button class="lightbox-nav lightbox-next" id="lb-next">&#8594;</button>
+</div>
+
+<!-- MUSIC PLAYER -->
+<iframe id="yt-iframe"
+  src="https://www.youtube.com/embed/M-AMu_iAcf8?autoplay=1&loop=1&playlist=M-AMu_iAcf8&controls=0&mute=0&enablejsapi=1"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+
+<div class="music-bar" id="music-bar">
+  <button class="music-btn" id="music-toggle" title="Pausar / Retomar">⏸</button>
+  <div class="music-equalizer" id="eq">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="music-info">
+    <span class="music-title">Turning Page</span>
+    <span class="music-artist">Sleeping At Last</span>
+  </div>
+</div>
+<div class="music-notice" id="music-notice">♪ Toque em qualquer lugar para ativar a música</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-heart">♥</span>
+  <p class="footer-text">"E enquanto houver amor, o tempo será sempre pouco."</p>
+  <p class="footer-names">Caio Macedo &amp; Hindyanara · para sempre</p>
+</footer>
+
+<script>
+  /* ── PARTICLES ── */
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  function createParticle() {
+    return {
+      x: Math.random() * canvas.width,
+      y: canvas.height + 10,
+      size: Math.random() * 2 + 0.5,
+      speedY: Math.random() * 0.8 + 0.3,
+      speedX: (Math.random() - 0.5) * 0.5,
+      opacity: Math.random() * 0.5 + 0.1,
+      color: Math.random() > 0.5 ? '#c9a84c' : '#c8767a',
+      life: 0,
+      maxLife: Math.random() * 300 + 200
+    };
+  }
+
+  for (let i = 0; i < 40; i++) {
+    const p = createParticle();
+    p.y = Math.random() * canvas.height;
+    p.life = Math.random() * p.maxLife;
+    particles.push(p);
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      p.life++;
+      p.y -= p.speedY;
+      p.x += p.speedX;
+      const progress = p.life / p.maxLife;
+      const alpha = progress < 0.1 ? progress * 10 * p.opacity :
+                    progress > 0.8 ? (1 - progress) * 5 * p.opacity : p.opacity;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + Math.round(alpha * 255).toString(16).padStart(2, '0');
+      ctx.fill();
+      if (p.life >= p.maxLife || p.y < -10) {
+        particles[i] = createParticle();
+      }
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  /* ── SLIDESHOW ── */
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  let current = 0, autoPlay;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.classList.add('dot');
+    if (i === 0) d.classList.add('active');
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsEl.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsEl.children[current].classList.add('active');
+  }
+
+  document.getElementById('prev').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  document.getElementById('next').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+
+  function resetAuto() {
+    clearInterval(autoPlay);
+    autoPlay = setInterval(() => goTo(current + 1), 4500);
+  }
+  resetAuto();
+
+  /* ── TIMELINE SCROLL ── */
+  const milestones = document.querySelectorAll('.milestone');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.3 });
+  milestones.forEach(m => observer.observe(m));
+
+  /* ── TIMERS ── */
+  const dates = [
+    new Date(2024, 3, 13, 3, 15, 0),   // namoro
+    new Date(2024, 8, 12, 21, 40, 0),  // noivado
+    new Date(2026, 2, 20, 5, 30, 0),   // reencontro
+  ];
+
+  const prefixes = ['d1', 'd2', 'd3'];
+
+  function updateTimers() {
+    const now = new Date();
+    prefixes.forEach((p, i) => {
+      const diff = now - dates[i];
+      if (diff < 0) return;
+      const days    = Math.floor(diff / 86400000);
+      const hours   = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      document.getElementById(`${p}-days`).textContent = days;
+      document.getElementById(`${p}-hours`).textContent = String(hours).padStart(2, '0');
+      document.getElementById(`${p}-min`).textContent   = String(minutes).padStart(2, '0');
+      document.getElementById(`${p}-sec`).textContent   = String(seconds).padStart(2, '0');
+    });
+  }
+
+  updateTimers();
+  setInterval(updateTimers, 1000);
+
+  /* ── LIGHTBOX ── */
+  const imgSrcs = [
+    'https://drive.google.com/thumbnail?id=1RYNiOHAk-nqJnhM1sU2UDJ_tuz2bPDie&sz=w1200',
+    'https://drive.google.com/thumbnail?id=11nQnt0zY0GYaYqBc4Eml0mr2zmarXxWm&sz=w1200',
+    'https://drive.google.com/thumbnail?id=1wU1OZXm2YmRa68OdlwC6t1hipcnpJrtD&sz=w1200',
+    'https://drive.google.com/thumbnail?id=1Wr1L1gf-lCIfey8zo2xxo5mhTSlpP_T0&sz=w1200',
+    'https://drive.google.com/thumbnail?id=19R2kwWuZKFz5ZX71k8IQiNdB2nAA6SKh&sz=w1200',
+  ];
+
+  const lightbox = document.getElementById('lightbox');
+  const lbImg    = document.getElementById('lb-img');
+  let lbIndex    = 0;
+
+  function openLightbox(idx) {
+    lbIndex = idx;
+    lbImg.src = imgSrcs[lbIndex];
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function lbNav(dir) {
+    lbIndex = (lbIndex + dir + imgSrcs.length) % imgSrcs.length;
+    lbImg.style.animation = 'none';
+    lbImg.offsetHeight; // reflow
+    lbImg.style.animation = '';
+    lbImg.src = imgSrcs[lbIndex];
+  }
+
+  // Click slide to open lightbox
+  document.querySelectorAll('.slide').forEach((slide, i) => {
+    slide.addEventListener('click', () => openLightbox(i));
+  });
+
+  document.getElementById('lb-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', closeLightbox);
+  document.getElementById('lb-prev').addEventListener('click', (e) => { e.stopPropagation(); lbNav(-1); });
+  document.getElementById('lb-next').addEventListener('click', (e) => { e.stopPropagation(); lbNav(1); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  /* ── MUSIC PLAYER ── */
+  const ytFrame    = document.getElementById('yt-iframe');
+  const toggleBtn  = document.getElementById('music-toggle');
+  const eqEl       = document.getElementById('eq');
+  const notice     = document.getElementById('music-notice');
+  let isPlaying    = false;
+  let ytReady      = false;
+  let player;
+
+  // Show notice briefly on load
+  setTimeout(() => {
+    notice.classList.add('show');
+    setTimeout(() => notice.classList.remove('show'), 4000);
+  }, 1800);
+
+  // YouTube IFrame API
+  const tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  window.onYouTubeIframeAPIReady = function() {
+    player = new YT.Player('yt-iframe', {
+      events: {
+        'onReady': (e) => {
+          ytReady = true;
+          ytFrame.style.display = 'none';
+          // Try autoplay; browsers may block
+          try {
+            e.target.playVideo();
+            isPlaying = true;
+            toggleBtn.textContent = '⏸';
+            eqEl.classList.remove('paused');
+          } catch(err) {}
+        },
+        'onStateChange': (e) => {
+          if (e.data === YT.PlayerState.PLAYING) {
+            isPlaying = true; toggleBtn.textContent = '⏸';
+            eqEl.classList.remove('paused');
+          } else {
+            isPlaying = false; toggleBtn.textContent = '▶';
+            eqEl.classList.add('paused');
+          }
+        }
+      }
+    });
+  };
+
+  toggleBtn.addEventListener('click', () => {
+    if (!ytReady) return;
+    if (isPlaying) { player.pauseVideo(); }
+    else           { player.playVideo(); }
+  });
+
+  // First interaction unlock (some browsers block autoplay)
+  function unlockOnInteraction() {
+    if (ytReady && !isPlaying) {
+      try { player.playVideo(); } catch(e) {}
+    }
+    document.removeEventListener('click', unlockOnInteraction);
+    document.removeEventListener('touchstart', unlockOnInteraction);
+  }
+  document.addEventListener('click', unlockOnInteraction);
+  document.addEventListener('touchstart', unlockOnInteraction);
+</script>
+</body>
+</html>
